@@ -1,0 +1,48 @@
+select theme
+select number of players
+select grid size
+
+players: [{name, score}]
+currentTurnIndex
+grid: [{content, isTurned, backgroundColor}]
+selectedIndex1: {x, y}
+selectedIndex2
+
+grid item canSelect? !isTurned && !selectedIndex2 && 
+(!selectedIndex1 || !(selectedIndex1.x === i.x && selecteIndex1.y === i.y))
+
+start:
+init grid randomly
+init players array
+init currentTurnIndex 0
+init selectedIndex1
+init selectedIndex2
+
+turn:
+check if all grid turned
+if yes:
+	go to scores pages
+else:
+	currentTurnIndex = (currentTurnIndex + 1) % players.length
+	wait for selectedIndex1
+	set selectedIndex1
+	wait for selectedIndex2
+	set selectedIndex2
+	set timeout 0.5
+	compare selectedIndex1 and selectedIndex2
+	if equal:
+		set color green
+		set timeout 0.5
+		set color gray
+		set indexes isturned true
+		increment score
+	else:
+		set color red
+		set timeout 0.5
+	clear selectedIndex 1 and 2
+
+
+checkIsEntireGridTurned()
+incrementTurnIndex()
+handleSelection(x, y)
+compareSelections()
